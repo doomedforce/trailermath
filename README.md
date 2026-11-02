@@ -10,10 +10,10 @@ and first-trailer benchmarks by genre. Home: trailermath.com.
   `views.json` holds view snapshots for videos under 30 days old and each video's 24-hour figure.
 - `public/`: the static site (`#/` this week, `#/upcoming`, `#/benchmarks`, `#/film/<tmdb id>`).
 - `.github/workflows/build.yml`: commits `data/` and deploys to Cloudflare Pages.
-- `cron/`: a Cloudflare Worker (`trailermath-cron`) that starts the build at :11 every hour (and The Drop's
+- `cron/`: a Cloudflare Worker (`trailermath-cron`) that starts the build at :11 every hour, Rerun's refresh at :17 (and The Drop's
   draft on Mondays at 15:00 UTC). GitHub's own
   schedule skips most hours, so it is only a 3-hourly fallback. The Worker needs a `GITHUB_TOKEN` secret
-  (fine-grained, this repo only, "Actions: Read and write"), kept in `cron/secrets.env` (gitignored) as
+  (fine-grained, this repo and doomedforce/Rerun, "Actions: Read and write"), kept in `cron/secrets.env` (gitignored) as
   `GITHUB_TOKEN=...`. Redeploy with `cd cron && npm i && npm run deploy`, which uploads the secret with the
   code. A plain `cf deploy` drops secrets added in the dashboard.
 - `posts/`: the blog, one Markdown file per post, published at `#/blog/<file name>`. Front matter:

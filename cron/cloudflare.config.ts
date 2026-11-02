@@ -7,8 +7,12 @@ export default defineConfig({
 		entrypoint,
 		compatibilityDate: "2026-10-01",
 		// Keep in sync with WORKFLOWS in src/index.js.
-		triggers: [triggers.scheduled({ schedule: "11 * * * *" }), triggers.scheduled({ schedule: "0 15 * * 1" })],
+		triggers: [
+			triggers.scheduled({ schedule: "0 15 * * 1" }),
+			triggers.scheduled({ schedule: "11 * * * *" }),
+			triggers.scheduled({ schedule: "17 * * * *" }),
+		],
 		// Needs a GITHUB_TOKEN secret, added in the dashboard: a fine-grained token for
-		// doomedforce/trailermath with "Actions: Read and write". (This cf version can't declare secrets here.)
+		// doomedforce/trailermath and doomedforce/Rerun with "Actions: Read and write". (This cf version can't declare secrets here.)
 	},
 });
